@@ -12,5 +12,5 @@
 
 - Basic project structure to make the `Pdf2htmlex.convert()` function work
 
-[0.1.1]: https://github.com/marcosgz/pdf2htmlex/releases/compare/v0.1.0...v0.1.1
+[0.1.1]: https://github.com/marcosgz/pdf2htmlex/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/marcosgz/pdf2htmlex/releases/tag/v0.1.0
