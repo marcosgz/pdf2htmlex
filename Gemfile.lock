@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pdf2htmlex (0.1.0)
+    pdf2htmlex (0.1.1)
 
 GEM
   remote: https://rubygems.org/

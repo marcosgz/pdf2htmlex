@@ -117,4 +117,67 @@ RSpec.describe Pdf2htmlex do
       expect { described_class.convert('filename') }.not_to raise_error
     end
   end
+
+  [
+    [{ last_page: 10 }, ['--last-page 10']],
+    [{ zoom: 1.5 }, ['--zoom 1.5']],
+    [{ fit_width: 800.0 }, ['--fit-width 800.0']],
+    [{ fit_height: 600.0 }, ['--fit-height 600.0']],
+    [{ use_cropbox: false }, ['--use-cropbox 0']],
+    [{ hdpi: 144 }, ['--hdpi 144']],
+    [{ vdpi: 144 }, ['--vdpi 144']],
+    [{ embed: true }, ['--embed 1']],
+    [{ embed_css: true }, ['--embed-css 1']],
+    [{ embed_font: true }, ['--embed-font 1']],
+    [{ embed_image: true }, ['--embed-image 1']],
+    [{ embed_javascript: true }, ['--embed-javascript 1']],
+    [{ embed_outline: true }, ['--embed-outline 1']],
+    [{ split_pages: true }, ['--split-pages 1']],
+    [{ dest_dir: './' }, ['--dest-dir ./']],
+    [{ css_filename: 'style.css' }, ['--css-filename style.css']],
+    [{ page_filename: 'p.html' }, ['--page-filename p.html']],
+    [{ outline_filename: 'test' }, ['--outline-filename test']],
+    [{ process_nontext: true }, ['--process-nontext 1']],
+    [{ process_outline: true }, ['--process-outline 1']],
+    [{ process_annotation: false }, ['--process-annotation 0']],
+    [{ process_form: false }, ['--process-form 0']],
+    [{ printing: true }, ['--printing 1']],
+    [{ fallback: false }, ['--fallback 0']],
+    [{ tmp_file_size_limit: -1 }, ['--tmp-file-size-limit -1']],
+    [{ embed_external_font: false }, ['--embed-external-font 0']],
+    [{ font_format: 'woff' }, ['--font-format woff']],
+    [{ decompose_ligature: true }, ['--decompose-ligature 1']],
+    [{ auto_hint: true }, ['--auto-hint 1']],
+    [{ external_hint_tool: 'test' }, ['--external-hint-tool test']],
+    [{ stretch_narrow_glyph: true }, ['--stretch-narrow-glyph 1']],
+    [{ squeeze_wide_glyph: true }, ['--squeeze-wide-glyph 1']],
+    [{ override_fstype: true }, ['--override-fstype 1']],
+    [{ process_type3: true }, ['--process-type3 1']],
+    [{ heps: true }, ['--heps 1']],
+    [{ veps: true }, ['--veps 1']],
+    [{ space_threshold: 0.125 }, ['--space-threshold 0.125']],
+    [{ font_size_multiplier: 4 }, ['--font-size-multiplier 4']],
+    [{ space_as_offset: true }, ['--space-as-offset 1']],
+    [{ tounicode: -1 }, ['--tounicode -1']],
+    [{ optimize_text: true }, ['--optimize-text 1']],
+    [{ correct_text_visibility: true }, ['--correct-text-visibility 1']],
+    [{ bg_format: 'png' }, ['--bg-format png']],
+    [{ svg_node_count_limit: -1 }, ['--svg-node-count-limit -1']],
+    [{ svg_embed_bitmap: true }, ['--svg-embed-bitmap 1']],
+    [{ owner_password: 'user' }, ['--owner-password user']],
+    [{ user_password: 'pass' }, ['--user-password pass']],
+    [{ no_drm: true }, ['--no-drm 1']],
+    [{ clean_tmp: true }, ['--clean-tmp 1']],
+    [{ tmp_dir: '/tmp' }, ['--tmp-dir /tmp']],
+    [{ data_dir: '/tmp' }, ['--data-dir /tmp']],
+    [{ debug: true }, ['--debug 1']],
+    [{ proof: true }, ['--proof 1']],
+  ].each do |keywords, expected_options|
+    specify do
+      expect_command_to_match(*expected_options)
+
+      described_class.convert('file.pdf', **keywords)
+    end
+  end
+
 end
